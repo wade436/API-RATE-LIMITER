@@ -6,6 +6,11 @@ to enforce rate limiting without building the logic themselves.
 ---
 ###  HOW IT WORKS
  This uses redis under the hood to store the requests and uses a lua script to count and remove the records from redis. There is only one algorithm being used at the moment and that is the sliding window algorithm which is implemented in the slidingWindow.lua file.
+#### Why Lua Scripts
+Rate limiting requires an atomic check-and-increment operation. 
+Without atomicity, two concurrent requests can both pass the limit 
+check before either increments the counter. Lua scripts run atomically 
+inside Redis, making this race condition impossible.
 #### This rate limiter only has three routes
  **/consume**
 the consume route receives the requests and runs the sliding window algorithm on them, it returns a json  object containing the the status of the request( allowed or denied ), the count of the request within the window and the remaining requests.
@@ -45,11 +50,6 @@ POST /consume
   })
 ```
 
-#### Why Lua Scripts
-Rate limiting requires an atomic check-and-increment operation. 
-Without atomicity, two concurrent requests can both pass the limit 
-check before either increments the counter. Lua scripts run atomically 
-inside Redis, making this race condition impossible.
 
 _this code has not been written for production._
 
