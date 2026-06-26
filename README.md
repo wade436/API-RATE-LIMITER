@@ -1,6 +1,7 @@
-## API RATE LIMITER WITH SLIDING WINDOW ALGORITHM 
+## Distributed Rate Limiter as a Service
+A standalone HTTP microservice that any backend can integrate with 
+to enforce rate limiting without building the logic themselves.
 
-This repo contains the code to a micro service rate limiter with the slidingwindow algorithm to curb burst requests.
 
 ---
 ###  HOW IT WORKS
@@ -28,7 +29,27 @@ To run this code make sure you have redis installed, however do not run the redi
 #### Run this command to start the api rate limiter
 `npm run dev` 
 
----
+#### Usage
+POST /consume
+```
+ fetch('http://localhost:3000/consume', {
+    method: 'POST',
+    headers: { 
+      'Content-Type': 'application/json' 
+    },
+    body: JSON.stringify({
+      key: `user:${userId}:api`,
+      limit: 100,
+      window: 60
+    })
+  })
+```
+
+#### Why Lua Scripts
+Rate limiting requires an atomic check-and-increment operation. 
+Without atomicity, two concurrent requests can both pass the limit 
+check before either increments the counter. Lua scripts run atomically 
+inside Redis, making this race condition impossible.
 
 _this code has not been written for production._
 
