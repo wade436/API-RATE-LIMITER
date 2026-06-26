@@ -1,0 +1,24 @@
+{
+  "name": "api-rate-limiter",
+  "version": "1.0.0",
+  "description": "A distributed rate limiter as a service",
+  "license": "ISC",
+  "author": "Wankunda Sikaonga",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": " node start",
+    "dev": "npx tsc && node --watch --env-file=.env src/index.ts brew services start redis"
+  
+  },
+  "devDependencies": {
+    "@tsconfig/node26": "^26.0.0",
+    "@types/express": "^5.0.6",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "ioredis": "^5.11.1",
+    "rate-limiter-flexible": "^11.2.0"
+  }
+}
