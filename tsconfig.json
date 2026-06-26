@@ -1,12 +1,9 @@
-{"Extends": "tsconfig/node26/tsconfig.json",
+{"extends": "@tsconfig/node-lts/tsconfig.json",
     
-        "compilerOptions": {
-            "module": "esnext",
-            "moduleResolution": "bundler",
+        "compilerOptions": {  
             "rootDir": "src",
             "outDir": "dist",
-            "noEmit": true,
-            "allowImportingTsExtensions": true
+            
         },
       
    

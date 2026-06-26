@@ -1,9 +1,9 @@
 import express from 'express'
 import type { Express } from 'express'
-import { check_Router } from './router/check.ts'
-import { consume_Router } from './router/consume.ts'
-import { stats_Router } from './router/stats.ts'
-import { redisClient } from './redis.ts'
+import { check_Router } from './routes/check.js'
+import { consume_Router } from './routes/consume.js'
+import { stats_Router } from './routes/stats.js'
+
 
 
 
@@ -11,11 +11,6 @@ const port = process.env.PORT || 3000
 const app: Express = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-
-console.log(await redisClient.ping())
-
-// const test = await checkSlidingWindow("test:wade", 5, 60)
-// console.log(test)
 
 
 app.use("/consume", consume_Router);

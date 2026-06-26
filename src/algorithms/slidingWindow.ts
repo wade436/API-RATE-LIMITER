@@ -1,4 +1,4 @@
-import { redisClient } from "../redis.ts";
+import { redisClient } from "../redis.js";
 
 
 // The return type from lua comes back as an array [allowed, count, remaining]

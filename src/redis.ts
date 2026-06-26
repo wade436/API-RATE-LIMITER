@@ -1,9 +1,9 @@
-import Redis from "ioredis";
+import { Redis } from "ioredis";
 import fs from "fs"
 import { join } from "path" 
 
 //initialize redis
-export const redisClient = new Redis();
+export const redisClient: Redis = new Redis();
 
 //load the lua script in nodejs
 const slidingWindowScript = fs.readFileSync(join( import.meta.dirname, '../scripts/slidingWindow.lua'), 'utf8')

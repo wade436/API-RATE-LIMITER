@@ -1,9 +1,8 @@
 import type { Request, Response } from "express"
-import { checkSlidingWindow } from "../algorithms/slidingWindow.ts"
+import { checkSlidingWindow } from "../algorithms/slidingWindow.js"
 
 export const consumeController = async (req: Request, res: Response) => { 
 
-    console.log("inside the consume router")
     //extract key, limit and window values from request
     const { key, limit, window } = req.body
 

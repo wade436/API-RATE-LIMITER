@@ -1,4 +1,4 @@
-import { redisClient } from "../redis.ts"
+import { redisClient } from "../redis.js"
 
 
 //what is the return type of the specific lua script?

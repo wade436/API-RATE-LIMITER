@@ -1,5 +1,5 @@
 import { application, type Request, type Response } from "express"
-import { checkCount } from "../algorithms/checkCount.ts"
+import { checkCount } from "../algorithms/checkCount.js"
 
 export const checkController = async (req: Request, res: Response) => { 
     

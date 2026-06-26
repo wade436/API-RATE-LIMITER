@@ -29,9 +29,12 @@ The check route returns the stats of the /:key in the url which returns a json o
 
 ---
 ###  HOW TO RUN IT  
-To run this code make sure you have redis installed, however do not run the redis start command because that command has been added to the dev script in package.json
+To run this code make sure you have redis installed, then start redis with this command:
 
-#### Run this command to start the api rate limiter
+`redis-server`
+
+After redis is running you can now run the command below to the start the server:
+
 `npm run dev` 
 
 #### Usage
